@@ -1,0 +1,20 @@
+header{
+    background: #00000078;
+
+}
+header .logo,header .nameCinema{
+    color: var( --primary-color-1);
+    font-weight: 700;
+}
+header .menuItem:hover,header button:hover{
+    color: var(--primary-color-1);
+    transition: all 0.3s;
+    /* border-bottom:2px solid var(--primary-color-1); */
+}
+header .btnSignIn{
+    background-color: var(--primary-color-2);
+    border-radius: 20px;
+}
+.headerIcon{
+    color: white;
+}

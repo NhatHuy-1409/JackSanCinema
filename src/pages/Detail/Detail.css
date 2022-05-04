@@ -1,0 +1,55 @@
+.detailImg{
+    height: 50vh;
+    width: 100%;
+}
+.detail{
+    background: #3d3d3d;
+    padding-bottom: 20px;
+}
+.detailContent{
+    margin: auto;
+}
+.detailTop{
+    background:  linear-gradient(180deg, rgba(53,53,53,1) 14%, rgba(37,37,37,1) 87%);
+    padding: 20px;
+    position: relative;
+    top: -70px;
+    border-radius: 10px;
+    color: #c4c4c4;
+}
+.detailTop ul li {
+    border-bottom: 2px solid #424242;
+    padding: 10px 0;
+    padding-left: 10px;
+}
+.detailTop ul li:nth-of-type(1) {
+    border-top: 2px solid #424242;
+    margin-top: 20px;
+}
+.detailBottom{
+    background: linear-gradient(180deg, rgba(53,53,53,1) 14%, rgba(37,37,37,1) 87%);
+    padding: 20px;
+    border-radius: 10px;
+
+
+}
+.detailBottom .contentFilm > h1,.detailBottom .contentFilm > p,.detailBottom .contentFilm > div{
+    display: none;
+}
+.detailBottom .contentFilm {
+    height: 0;
+    position: relative;
+    padding: 0;
+}
+.detailBottom .btnFilm {
+    bottom: -15px;
+}
+.detailBottom .film img{
+   border-radius: 10px;
+}
+.detailBottom  .slick-next,.detailBottom  .slick-prev{
+   display: none !important;
+}
+.detailBottom  .slick-dots{
+   display: none !important;
+}

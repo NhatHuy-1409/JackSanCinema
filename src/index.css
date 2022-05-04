@@ -1,13 +1,22 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@import url('https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&family=Viga&display=swap');
+
+
+:root{
+    --primary-color-1: #c8235d;
+    --primary-color-2: #7f66de;
+    --color-1:#3d3d3d;
+    --color-2:#707070;
+    --color-3:#c4c4c4;
+    --color-gradient-1:linear-gradient(320deg, rgba(127,102,222,1) 25%, rgba(200,35,93,1) 73%);
+    --color-gradient-2:linear-gradient(0deg, rgba(70,61,104,1) 25%, rgba(104,89,154,1) 87%);
+    --color-gradient-3:linear-gradient(0deg, rgba(118,118,118,1) 25%, rgba(46,46,46,1) 87%);
+    --font-viga: 'Viga', sans-serif;
+    --font-oxygen: 'Oxygen', sans-serif;
+}
+body{
+    font-family: var(--font-oxygen) !important;
 }

@@ -1,0 +1,19 @@
+.selectImg{
+    height: 50vh;
+    width: 100%;
+}
+.select{
+    background: #3d3d3d;
+    padding-bottom: 20px;
+}
+.selectContent{
+    margin: auto;
+}
+.selectTop{
+    background:  linear-gradient(180deg, rgba(53,53,53,1) 14%, rgba(37,37,37,1) 87%);
+    padding: 20px;
+    position: relative;
+    top: -70px;
+    border-radius: 10px;
+    color: #c4c4c4;
+}

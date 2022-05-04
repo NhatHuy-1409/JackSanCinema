@@ -1,0 +1,10 @@
+a{
+    color: white;
+}
+footer{
+    background: linear-gradient(180deg, rgba(52,52,52,1) 25%, rgba(35,35,35,1) 87%);
+}
+footer svg,footer .nameCinema{
+    color: var( --primary-color-1);
+    font-weight: 700;
+}

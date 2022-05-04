@@ -1,0 +1,36 @@
+.homeCarousel .ant-carousel .slick-dots li.slick-active button{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    border-radius: 50%;
+    border: 5px solid #c8235d;
+}
+.homeCarousel .slick-dots li button:before {
+    content: ''!important;
+
+}
+.homeCarousel .ant-carousel .slick-dots li button {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    border-radius: 50%;
+    border: 5px solid #c8235d;
+}
+.homeCarousel .ant-carousel .slick-dots-bottom {
+    bottom: 15%;
+    left: 15%;
+}
+.carouselContent {
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    color: white;
+    margin: 0 20px;
+    max-width: 500px;
+}
+.homeCarousel{
+    position: relative;
+    height: 100%;
+}
