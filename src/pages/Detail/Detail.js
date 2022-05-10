@@ -8,11 +8,11 @@ import ReactPlayer from 'react-player';
 import { history } from '../../App'
 export default function Detail(props) {
     const { arrFilm, infoFilm } = useSelector(state => state.QuanLyPhimReducer)
-    window.scrollTo(0, 0);  
 
     let dispatch = useDispatch()
     useEffect(() => {
         callAPI();
+        window.scrollTo(0, 0);
     }, [])
     useEffect(() => {
         // Chỉ khi thay đổi phim trong detail page
@@ -24,7 +24,7 @@ export default function Detail(props) {
         dispatch(GetInfoFilm(props.match.params.id))
     }
     console.log(infoFilm);
-    const { tenPhim, moTa, trailer, hinhAnh,maPhim } = infoFilm
+    const { tenPhim, moTa, trailer, hinhAnh, maPhim } = infoFilm
 
     const renderActor = () => {
         return (
@@ -97,7 +97,7 @@ export default function Detail(props) {
                             </ul>
                         </div>
                         <div className='w-1/3 pl-5 flex flex-col items-end'>
-                            <ReactPlayer url={`${trailer}`} width="100%" height={'60%'}  playing={true} />
+                            <ReactPlayer url={`${trailer}`} width="100%" height={'60%'} playing={true} />
 
                             <p className='mt-12 mb-1'>Interested in this movie ?</p>
                             <button className=' py-4 px-8 rounded-lg text-white font-bold text-lg' style={{ backgroundColor: '#c8235d' }} onClick={() => { history.push(`/select/${maPhim}`) }}>Book now</button>
