@@ -3,6 +3,7 @@ a{
 }
 footer{
     background: linear-gradient(180deg, rgba(52,52,52,1) 25%, rgba(35,35,35,1) 87%);
+    max-width: 100% !important;
 }
 footer svg,footer .nameCinema{
     color: var( --primary-color-1);

@@ -1,0 +1,59 @@
+.textGray{
+    color: #aaaaaa;
+}
+.textWhite{
+    color: #d8d8d8;
+}
+.progressCheckout p {
+
+    background: #3d3d3d;
+    position: relative;
+    z-index: 2;
+}
+.progressCheckout i {
+    background: #343434;
+    height: 3px;
+    z-index: 0;
+}
+.progressCheckout i::after {
+    background: linear-gradient(124deg, rgba(127, 102, 222, 1) 25%, rgba(200, 35, 93, 1) 73%) !important;
+    content: "";
+    width: 35%;
+    position: absolute;
+    height: 3px;
+    transition: all 0.3s;
+}
+.progressCheckout.progressInfo i::after {
+    width: 65%;
+    background: linear-gradient(124deg, rgba(127, 102, 222, 1) 5%, rgba(200, 35, 93, 1) 73%) !important;
+}
+.progressSeat {
+    background: #c8235d !important;
+}
+.checkoutSeat,.checkoutPay {
+    background: #3d3d3d;
+    margin: auto;
+}
+.bgCheckout {
+    background: linear-gradient(180deg, rgba(53, 53, 53, 1) 14%, rgba(37, 37, 37, 1) 87%);
+    border-radius: 10px;
+    padding: 20px;
+}
+.checkout .leftCircleIcon {
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    background: #707070;
+    border-radius: 50%;
+}
+.checkout .rightIcon {
+    color: white;
+    cursor: pointer;
+}
+
+.checkout button:hover{
+    opacity: 0.8;
+}
+.checkout button{
+    transition: all .3s;
+}

@@ -16,10 +16,10 @@ export default function Footer() {
                         </a>
                     </div>
                     <div className=' col-span-12 sm:col-span-9 mx-auto'>
-                        <div className=' grid grid-cols-12 w-full '>
+                        <div className=' md:grid grid-cols-12 w-full '>
 
                             <h3 className="pb-1 text-lg text-center  sm:text-left col-span-12 text-white font-bold	">ADDRESSES & CONTACTS</h3>
-                            <div className='pb-1 text-lg font-medium col-span-6 text-center md:text-left md:col-span-12 grid grid-cols-12 w-full'>
+                            <div className='pb-1 text-lg font-medium col-span-12 sm:col-span-6 text-center md:text-left md:col-span-12 sm:grid grid-cols-12 w-full'>
                                 <div className="col-span-12 text-center md:text-left sm:col-span-4 ">
                                     <ul>
                                         <li>
@@ -53,13 +53,13 @@ export default function Footer() {
                         </div>
                         <div className="grid grid-cols-12 w-full">
                             {/* <p className="pb-1 text-lg font-medium">Jack's Town</p> */}
-                            <h3 className="mb-0 text-lg col-span-12 text-left md:col-span-12 text-white font-bold	">SOCIAL MEDIA</h3>
-                            <div className='mb-0 text-lg font-medium col-span-6 text-center md:text-left md:col-span-12 grid grid-cols-12 w-full'>
-                                <div className="col-span-12 text-center md:text-left sm:col-span-4 ">
+                            <h3 className="mb-0 text-lg col-span-12 text-center sm:text-left md:col-span-12 text-white font-bold	">SOCIAL MEDIA</h3>
+                            <div className='mb-0 text-lg font-medium col-span-12 text-center md:text-left md:col-span-12 grid grid-cols-12 w-full'>
+                                <div className="col-span-12 text-center md:text-left sm:col-span-4 m-auto sm:m-0 ">
                                     <ul>
                                         <li>
                                             <div className="flex justify-start pt-4 space-x-4 lg:pt-0 lg:col-end-13">
-                                                <a rel="noopener noreferrer" href="#" title="Email" className="flex items-center justify-start w-10 h-10 rounded-full dark:bg-violet-400 dark:text-coolGray-900 ">
+                                                <a rel="noopener noreferrer" href="#" title="Email" className="flex items-center justify-start w-10 h-10 rounded-full dark:bg-violet-400 dark:text-coolGray-900 ml-5 md:ml-0">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 text-violet-600">
                                                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                                                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />

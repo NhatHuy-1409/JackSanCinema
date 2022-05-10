@@ -3,14 +3,16 @@ import { NavLink } from 'react-router-dom'
 import './Header.css'
 import { ShoppingCartOutlined } from '@ant-design/icons';
 
-export default function Header() {
+export default function Header(props) {
 
     const [subMenu, setSubmenu] = useState(false)
 
     return (
-        <header className=" p-4 dark:bg-coolGray-800 dark:text-coolGray-100  text-white fixed w-full z-10">
+        <header className=" p-4 dark:bg-coolGray-800 dark:text-coolGray-100  text-white fixed w-full " style={{
+            background: props.bgHeader
+        }} >
             <div className="container flex justify-between h-16 mx-auto headerIcon">
-                <button className="p-4 lg:hidden" onClick={() =>  setSubmenu(!subMenu) }>
+                <button className="p-4 lg:hidden" onClick={() => setSubmenu(!subMenu)}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-coolGray-100">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
@@ -46,22 +48,22 @@ export default function Header() {
                     <ShoppingCartOutlined className='text-2xl headerIcon' />
                 </button>
             </div>
-            <ul className={`${subMenu?'':'hidden'} lg:hidden `} >
-                    <li className="">
-                        <NavLink to="/home" className="menuItem  px-4 -mb-1 border-b-2 w-4/5 block m-auto text-center mt-4 text-white " activeClassName='border-b-pink-500'>MOVIES</NavLink>
-                    </li>
-                    <li className="">
-                        <NavLink to="/contact" className="menuItem  px-4 -mb-1 border-b-2 w-4/5 block m-auto text-center mt-4 text-white" activeClassName='border-b-pink-500'>CINEMAS</NavLink>
-                    </li>
-                    <li className="">
-                        <NavLink to="/news" className="menuItem  px-4 -mb-1 border-b-2 w-4/5 block m-auto text-center mt-4 text-white" activeClassName=' border-b-pink-500'>OFFERS</NavLink>
-                    </li>
+            <ul className={`${subMenu ? '' : 'hidden'} lg:hidden `} >
+                <li className="">
+                    <NavLink to="/home" className="menuItem  px-4 -mb-1 border-b-2 w-4/5 block m-auto text-center mt-4 text-white " activeClassName='border-b-pink-500'>MOVIES</NavLink>
+                </li>
+                <li className="">
+                    <NavLink to="/contact" className="menuItem  px-4 -mb-1 border-b-2 w-4/5 block m-auto text-center mt-4 text-white" activeClassName='border-b-pink-500'>CINEMAS</NavLink>
+                </li>
+                <li className="">
+                    <NavLink to="/news" className="menuItem  px-4 -mb-1 border-b-2 w-4/5 block m-auto text-center mt-4 text-white" activeClassName=' border-b-pink-500'>OFFERS</NavLink>
+                </li>
 
-                </ul>
-                <div className={`${subMenu?'':'hidden'} lg:hidden items-center flex-shrink-0 text-center`} >
-                    <button className="self-center px-8 py-3 rounded">Don't have account yet?<br />Please Sign Up here</button>
-                    <button className="btnSignIn self-center px-8 py-3 " style={{verticalAlign:'text-top'}}>SIGN IN</button>
-                </div>
+            </ul>
+            <div className={`${subMenu ? '' : 'hidden'} lg:hidden items-center flex-shrink-0 text-center`} >
+                <button className="self-center px-8 py-3 rounded">Don't have account yet?<br />Please Sign Up here</button>
+                <button className="btnSignIn self-center px-8 py-3 " style={{ verticalAlign: 'text-top' }}>SIGN IN</button>
+            </div>
         </header>
 
     )

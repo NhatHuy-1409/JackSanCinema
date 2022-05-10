@@ -1,6 +1,6 @@
 header{
     background: #00000078;
-
+    z-index: 100;
 }
 header .logo,header .nameCinema{
     color: var( --primary-color-1);

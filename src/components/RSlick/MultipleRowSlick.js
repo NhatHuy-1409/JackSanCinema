@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import Film from "../Film/Film";
 import styleSlick from './MultipleRowSlick.module.css'
-export default class AutoPlay  extends Component {
-    
+export default class AutoPlay extends Component {
+
     renderFilms = () => {
-        return this.props.arrFilm.map((film) => {
-            return <div className={`${styleSlick['width-item']}`}>
+        return this.props.arrFilm.map((film, index) => {
+            return <div key={index} className={`${styleSlick['width-item']}`}>
                 <Film infoFilm={film} />
             </div>
         })
@@ -20,11 +20,31 @@ export default class AutoPlay  extends Component {
             autoplay: false,
             speed: 2000,
             autoplaySpeed: 2000,
-            cssEase: "linear"
-          };
+            cssEase: "linear",
+            responsive: [
+                {
+                    breakpoint: 450,
+                    settings: {
+                        slidesToShow: 1.7,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 769,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+            ]
+        };
         return (
             <div>
-                <Slider {...settings}>
+                <Slider {...settings} className={this.props.className}>
                     {this.renderFilms()}
                 </Slider>
             </div>

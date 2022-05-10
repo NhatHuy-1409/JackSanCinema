@@ -10,7 +10,7 @@ export class QuanLyPhimService {
         return http.get(`api/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`)
     }
     LayThongTinPhim = (maPhim) => {
-        return http.get(`https://movienew.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`)
+        return http.get(`api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`)
     }
 }
 
