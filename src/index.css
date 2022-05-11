@@ -22,8 +22,11 @@ body {
 h2{
     font-family: var(--font-viga) !important;
 }
-@media (min-width: 1024px) {
+/* @media (min-width: 1024px) {
     .container {
         max-width: 100%;
     }
+} */
+.container {
+    max-width: 100% !important;
 }

@@ -49,8 +49,8 @@ export default function CheckoutSeat(props) {
   console.log(dsGheDangDat);
   return (
     <div className='checkoutSeat checkout pt-28 container '>
-      <div className='checkoutSeat-top flex'>
-        <div className='p-5  w-1/2'>
+      <div className='checkoutSeat-top block md:flex'>
+        <div className='p-2 md:p-5 w-full md:w-1/2'>
           <div className='bgCheckout h-full w-full flex '>
             <div className='w-1/6 text-center pt-3'>
               <LeftCircleOutlined className='text-2xl text-white leftCircleIcon'
@@ -60,8 +60,8 @@ export default function CheckoutSeat(props) {
             </div>
             <div className='w-5/6 '>
               <h3 className='pt-3 textGray text-xl '>Ticket booking</h3>
-              <h2 className='textWhite font-bold mt-10'>Selecting seats</h2>
-              <div className='flex justify-between w-96 relative progressCheckout'>
+              <h2 className='textWhite font-bold mt-5 md:mt-10'>Selecting seats</h2>
+              <div className='flex justify-between w-48 lg:w-96 relative progressCheckout'>
                 <p className=' w-4 h-4 mb-0 rounded-full progressSeat'></p>
                 <p className=' w-4 h-4 mb-0 rounded-full'></p>
                 <p className=' w-4 h-4 mb-0 rounded-full'></p>
@@ -71,7 +71,7 @@ export default function CheckoutSeat(props) {
             </div>
           </div>
         </div>
-        <div className='p-5  w-1/2'>
+        <div className='p-2 md:p-5  w-full md:w-1/2'>
           <div className='bgCheckout h-full w-full'>
             <div className='flex items-center'>
               <div className='w-1/3 p-3' style={{ height: '150px' }}>
@@ -87,8 +87,8 @@ export default function CheckoutSeat(props) {
           </div>
         </div>
       </div>
-      <div className='checkoutSeat-bottom flex'>
-        <div className='p-5  w-2/3'>
+      <div className='checkoutSeat-bottom block md:flex'>
+        <div className='p-2 md:p-5  w-full md:w-2/3'>
           <div className='bgCheckout'>
             <h2 className='w-4/5 bg-slate-300 m-auto text-center rounded-lg my-5 py-2 font-bold'>SCREEN</h2>
             <div className='text-center'>
@@ -119,7 +119,7 @@ export default function CheckoutSeat(props) {
             </div>
           </div>
         </div>
-        <div className='p-5  w-1/3'>
+        <div className='p-2 md:p-5  w-full md:w-1/3'>
           <div className=' bgCheckout p-0'>
             <h2 className='textWhite text-lg'>Selecting</h2>
             <hr />

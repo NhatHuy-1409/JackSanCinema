@@ -43,18 +43,18 @@ export default function Detail(props) {
             <div className="detailContent container">
                 <div className='detailTop'>
                     <div className='flex items-center'>
-                        <div className='w-1/3 p-3' style={{ height: '150px' }}>
-                            <img src={hinhAnh} alt="" className='w-full h-full rounded-lg' />
+                        <div className='w-0 sm:w-1/3 p-3 imgDetailContent' style={{ height: '150px' }}>
+                            <img src={hinhAnh} alt="" className='w-full h-full rounded-lg ' />
                         </div>
-                        <div className='w-2/3 pl-4'>
+                        <div className='w-full sm:w-2/3 pl-0 sm:pl-4'>
                             <h2 className='text-white font-bold text-2xl '>{tenPhim}</h2>
                             <p>
                                 {moTa}
                             </p>
                         </div>
                     </div>
-                    <div className='flex'>
-                        <div className='w-2/3 pr-5'>
+                    <div className='flex flex-col sm:flex-row'>
+                        <div className='w-full sm:w-1/2 md:w-2/3 pr-5'>
                             <ul>
                                 <li>Directed by: Chau Tinh Tri.</li>
                                 <li>Duration: 2 hour 22 minutes.</li>
@@ -64,29 +64,29 @@ export default function Detail(props) {
                                     <div className="">
                                         <p className='text-xl text-white mb-2'>Staring</p>
                                         <div className='flex'>
-                                            <div className='text-center w-1/5 px-5 '>
+                                            <div className='text-center w-1/5 px-1 md:px-5 '>
                                                 <img src="https://movienew.cybersoft.edu.vn/hinhanh/red-snake-dangerous_gp01.jpg" className=' w-full  rounded-lg' alt="" />
-                                                <p className='mb-0 text-white text-base'>Jack Sparrow</p>
+                                                <p className='mb-0 text-white text-xs md:text-base'>Jack Sparrow</p>
                                                 <p className='text-xs'>Main actor</p>
                                             </div>
-                                            <div className='text-center w-1/5 px-5'>
+                                            <div className='text-center w-1/5 px-1 md:px-5'>
                                                 <img src="https://movienew.cybersoft.edu.vn/hinhanh/red-snake-dangerous_gp01.jpg" className=' w-full rounded-lg' alt="" />
-                                                <p className='mb-0 text-white text-base'>Jack Sparrow</p>
+                                                <p className='mb-0 text-white text-xs md:text-base'>Jack Sparrow</p>
                                                 <p className='text-xs'>Main actor</p>
                                             </div>
-                                            <div className='text-center w-1/5 px-5'>
+                                            <div className='text-center w-1/5 px-1 md:px-5'>
                                                 <img src="https://movienew.cybersoft.edu.vn/hinhanh/red-snake-dangerous_gp01.jpg" className=' w-full rounded-lg' alt="" />
-                                                <p className='mb-0 text-white text-base'>Jack Sparrow</p>
+                                                <p className='mb-0 text-white text-xs md:text-base'>Jack Sparrow</p>
                                                 <p className='text-xs'>Main actor</p>
                                             </div>
-                                            <div className='text-center w-1/5 px-5'>
+                                            <div className='text-center w-1/5 px-1 md:px-5'>
                                                 <img src="https://movienew.cybersoft.edu.vn/hinhanh/red-snake-dangerous_gp01.jpg" className=' w-full rounded-lg' alt="" />
-                                                <p className='mb-0 text-white text-base'>Jack Sparrow</p>
+                                                <p className='mb-0 text-white text-xs md:text-base'>Jack Sparrow</p>
                                                 <p className='text-xs'>Main actor</p>
                                             </div>
-                                            <div className='text-center w-1/5 px-5'>
+                                            <div className='text-center w-1/5 px-1 md:px-5'>
                                                 <img src="https://movienew.cybersoft.edu.vn/hinhanh/red-snake-dangerous_gp01.jpg" className=' w-full rounded-lg' alt="" />
-                                                <p className='mb-0 text-white text-base'>Jack Sparrow</p>
+                                                <p className='mb-0 text-white text-xs md:text-base'>Jack Sparrow</p>
                                                 <p className='text-xs'>Main actor</p>
                                             </div>
                                         </div>
@@ -96,29 +96,29 @@ export default function Detail(props) {
                                 </li>
                             </ul>
                         </div>
-                        <div className='w-1/3 pl-5 flex flex-col items-end'>
-                            <ReactPlayer url={`${trailer}`} width="100%" height={'60%'} playing={true} />
+                        <div className='w-full sm:w-1/2 md:w-1/3 pl-0 sm:pl-5 flex flex-col items-end'>
+                            <ReactPlayer className='trailerVideo' url={`${trailer}`} width="100%" height={'60%'} playing={true} />
 
-                            <p className='mt-12 mb-1'>Interested in this movie ?</p>
+                            <p className='mt-6 sm:mt-12 mb-1'>Interested in this movie ?</p>
                             <button className=' py-4 px-8 rounded-lg text-white font-bold text-lg' style={{ backgroundColor: '#c8235d' }} onClick={() => { history.push(`/select/${maPhim}`) }}>Book now</button>
                         </div>
                     </div>
-                    <div>
+                    <div className='hidden sm:block'>
                         <h2 className='text-white font-bold text-2xl '>PHOTO GALLERY</h2>
                         <div className='flex'>
-                            <div className='text-center w-1/5 px-5 '>
+                            <div className='text-center w-1/5 px-2 md:px-5 '>
                                 <img src="https://movienew.cybersoft.edu.vn/hinhanh/red-snake-dangerous_gp01.jpg" className=' w-full  rounded-lg' alt="" />
                             </div>
-                            <div className='text-center w-1/5 px-5'>
+                            <div className='text-center w-1/5 px-2 md:px-5'>
                                 <img src="https://movienew.cybersoft.edu.vn/hinhanh/red-snake-dangerous_gp01.jpg" className=' w-full rounded-lg' alt="" />
                             </div>
-                            <div className='text-center w-1/5 px-5'>
+                            <div className='text-center w-1/5 px-2 md:px-5'>
                                 <img src="https://movienew.cybersoft.edu.vn/hinhanh/red-snake-dangerous_gp01.jpg" className=' w-full rounded-lg' alt="" />
                             </div>
-                            <div className='text-center w-1/5 px-5'>
+                            <div className='text-center w-1/5 px-2 md:px-5'>
                                 <img src="https://movienew.cybersoft.edu.vn/hinhanh/red-snake-dangerous_gp01.jpg" className=' w-full rounded-lg' alt="" />
                             </div>
-                            <div className='text-center w-1/5 px-5'>
+                            <div className='text-center w-1/5 px-2 md:px-5'>
                                 <img src="https://movienew.cybersoft.edu.vn/hinhanh/red-snake-dangerous_gp01.jpg" className=' w-full rounded-lg' alt="" />
                             </div>
                         </div>

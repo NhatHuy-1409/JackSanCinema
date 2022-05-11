@@ -57,3 +57,9 @@
 .checkout button{
     transition: all .3s;
 }
+
+@media screen and (max-width: 769px) {
+    .bgCheckout{
+        padding: 10px;
+    }
+}

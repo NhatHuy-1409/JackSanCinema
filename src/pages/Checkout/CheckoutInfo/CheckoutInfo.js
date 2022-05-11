@@ -25,8 +25,8 @@ export default function CheckoutInfo(props) {
     console.log(dsGheDangDat);
     return (
         <div className='checkoutPay checkout pt-28 container '>
-            <div className='checkoutPay-top flex'>
-                <div className='p-5  w-1/2'>
+            <div className='checkoutPay-top block md:flex'>
+                <div className='p-2 md:p-5 w-full md:w-1/2'>
                     <div className='bgCheckout h-full w-full flex '>
                         <div className='w-1/6 text-center pt-3'>
                             <LeftCircleOutlined className='text-2xl text-white leftCircleIcon'
@@ -36,8 +36,8 @@ export default function CheckoutInfo(props) {
                         </div>
                         <div className='w-5/6 '>
                             <h3 className='pt-3 textGray text-xl '>Ticket booking</h3>
-                            <h2 className='textWhite font-bold mt-10'>Fill information</h2>
-                            <div className='flex justify-between w-96 relative progressCheckout progressInfo'>
+                            <h2 className='textWhite font-bold mt-5 md:mt-10'>Fill information</h2>
+                            <div className='flex justify-between  w-48 lg:w-96 relative progressCheckout progressInfo'>
                                 <p className=' w-4 h-4 mb-0 rounded-full progressSeat'></p>
                                 <p className=' w-4 h-4 mb-0 rounded-full progressSeat'></p>
                                 <p className=' w-4 h-4 mb-0 rounded-full'></p>
@@ -47,7 +47,7 @@ export default function CheckoutInfo(props) {
                         </div>
                     </div>
                 </div>
-                <div className='p-5  w-1/2'>
+                <div className='p-2 md:p-5  w-full md:w-1/2'>
                     <div className='bgCheckout h-full w-full'>
                         <div className='flex items-center'>
                             <div className='w-1/3 p-3' style={{ height: '150px' }}>
@@ -63,8 +63,8 @@ export default function CheckoutInfo(props) {
                     </div>
                 </div>
             </div>
-            <div className='checkoutPay-bottom flex'>
-                <div className='p-5  w-2/3'>
+            <div className='checkoutPay-bottom block md:flex'>
+                <div className='p-2 md:p-5  w-full md:w-2/3'>
                     <div className='bgCheckout'>
                         <div className="flex justify-between items-center">
                             <h2 className='textWhite text-lg'>Fill your information</h2>
@@ -72,19 +72,19 @@ export default function CheckoutInfo(props) {
                         </div>
                         <hr />
                         <form className='my-10'>
-                            <input type="text" placeholder='YourName' className='p-2 m-2 bg-transparent w-3/5' />
-                            <input type="text" placeholder='Phone' className='p-2 m-2 bg-transparent w-2/5' />
-                            <input type="text" placeholder='Email' className='p-2 m-2 bg-transparent w-2/5' />
+                            <input type="text" placeholder='YourName' className='p-2 m-2 bg-transparent w-4/5 md:w-3/5' />
+                            <input type="text" placeholder='Phone' className='p-2 m-2 bg-transparent w-4/5 md:w-2/5' />
+                            <input type="text" placeholder='Email' className='p-2 m-2 bg-transparent w-4/5 md:w-2/5' />
                         </form>
 
                         <div>
-                            <button className='w-1/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Back</button>
-                            <button className='w-1/6 p-2  ml-1 rounded-lg font-bold textWhite' style={{ background: '#7f66de' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Next</button>
+                            <button className='w-2/6 md:w-1/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Back</button>
+                            <button className='w-2/6 md:w-1/6 p-2  ml-1 rounded-lg font-bold textWhite' style={{ background: '#7f66de' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Next</button>
                         </div>
 
                     </div>
                 </div>
-                <div className='p-5  w-1/3'>
+                <div className='p-2 md:p-5  w-full md:w-1/3'>
                     <div className=' bgCheckout p-0'>
                         <h2 className='textWhite text-lg'>Booking Sumary</h2>
                         <hr />

@@ -25,8 +25,8 @@ export default function CheckoutFinish(props) {
     console.log(dsGheDangDat);
     return (
         <div className='checkoutPay checkout pt-28 container '>
-            <div className='checkoutPay-top flex'>
-                <div className='p-5  w-1/2'>
+            <div className='checkoutPay-top block md:flex'>
+                <div className='p-2 md:p-5 w-full md:w-1/2'>
                     <div className='bgCheckout h-full w-full flex '>
                         <div className='w-1/6 text-center pt-3'>
                             <LeftCircleOutlined className='text-2xl text-white leftCircleIcon'
@@ -35,9 +35,9 @@ export default function CheckoutFinish(props) {
                                 }} />
                         </div>
                         <div className='w-5/6 '>
-                            <h3 className='pt-3 textGray text-xl '>Finished</h3>
-                            <h2 className='textWhite font-bold mt-10'>Payment Successful</h2>
-                            <div className='flex justify-between w-96 relative progressCheckout progressInfo'>
+                            <h3 className='pt-3 textGray text-xl '>Ticket booking</h3>
+                            <h2 className='textWhite font-bold mt-5 md:mt-10'>Fill information</h2>
+                            <div className='flex justify-between  w-48 lg:w-96 relative progressCheckout progressInfo'>
                                 <p className=' w-4 h-4 mb-0 rounded-full progressSeat'></p>
                                 <p className=' w-4 h-4 mb-0 rounded-full progressSeat'></p>
                                 <p className=' w-4 h-4 mb-0 rounded-full'></p>
@@ -47,7 +47,7 @@ export default function CheckoutFinish(props) {
                         </div>
                     </div>
                 </div>
-                <div className='p-5  w-1/2'>
+                <div className='p-2 md:p-5  w-full md:w-1/2'>
                     <div className='bgCheckout h-full w-full'>
                         <div className='flex items-center'>
                             <div className='w-1/3 p-3' style={{ height: '150px' }}>
@@ -63,8 +63,8 @@ export default function CheckoutFinish(props) {
                     </div>
                 </div>
             </div>
-            <div className='checkoutPay-bottom flex'>
-                <div className='p-5  w-2/3'>
+            <div className='checkoutPay-bottom block md:flex'>
+                <div className='p-2 md:p-5  w-full md:w-2/3'>
                     <div className='bgCheckout'>
                         <div className="flex justify-between items-center">
                             <h2 className='textWhite text-lg'>Congratulations, you have complete your booking!</h2>
@@ -83,7 +83,7 @@ export default function CheckoutFinish(props) {
                                 + Please scan it to check-in and enjoy the movie!
                             </li>
                         </ul>
-                        <button className='w-2/6 p-2  ml-1 rounded-lg font-bold textWhite ' style={{ background: '#7f66de' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Dowload e-tickets</button>
+                        <button className='w-3/6 sm:w-2/6 p-2  ml-1 rounded-lg font-bold textWhite ' style={{ background: '#7f66de' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Dowload e-tickets</button>
                         <hr className='my-3' />
                         <ul>
                             <li className='textGray'>Please contact us if you have not received the email or need any support</li>
@@ -93,13 +93,13 @@ export default function CheckoutFinish(props) {
 
 
                         <div>
-                            <button className='w-2/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Back to homepage</button>
+                            <button className='w-3/6 sm:w-2/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Back to homepage</button>
 
                         </div>
 
                     </div>
                 </div>
-                <div className='p-5  w-1/3'>
+                <div className='p-2 md:p-5  w-full md:w-1/3'>
                     <div className='text-center p-4' style={{ background: '#1a142c', borderRadius: ' 10px 10px 0 0' }}>
                         <h3 className='textWhite'>E-tickets</h3>
                         <img src={hinhAnh} alt="" className='m-auto w-full h-36 rounded-lg object-fill' />
@@ -125,7 +125,7 @@ export default function CheckoutFinish(props) {
                             }</span></li>
                         </ul>
                     </div>
-                    <div className='bgCheckout text-center' style={{ borderTop: '1px dashed white',borderLeft: '10px solid transparent',borderRight: '10px solid transparent' }}>
+                    <div className='bgCheckout text-center' style={{ borderTop: '1px dashed white', borderLeft: '10px solid transparent', borderRight: '10px solid transparent' }}>
                         <QrcodeOutlined className='text-8xl text-white rightIcon' />
                     </div>
 

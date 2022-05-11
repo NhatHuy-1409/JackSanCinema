@@ -53,3 +53,12 @@
 .detailBottom  .slick-dots{
    display: none !important;
 }
+
+@media screen and (max-width: 767px) {
+    .trailerVideo{
+        height: 50% !important;
+    }
+    .imgDetailContent{
+        display: none;
+    }
+}
