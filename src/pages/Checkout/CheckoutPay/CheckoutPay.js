@@ -38,7 +38,14 @@ export default function CheckoutPay(props) {
             cw: Yup.string().required('Please enter your CW card'),
         }),
         onSubmit: values => {
-            console.log(values);
+            if (formik.isValid ) {
+                const thongTinDatVe = new ThongTinDatVe()
+                thongTinDatVe.maLichChieu = props.match.params.id
+                thongTinDatVe.danhSachVe = dsGheDangDat
+                dispatch(datVe(thongTinDatVe))
+                history.push(`/checkoutfinish/${props.match.params.id}`)
+            }
+            
         },
 
     })
@@ -91,7 +98,7 @@ export default function CheckoutPay(props) {
                         </div>
                         <hr />
                         <form className='my-10' onSubmit={formik.handleSubmit}>
-                            <input type="text" name='cardNumber' placeholder='Credit card number' className='p-2 m-2 bg-transparent w-4/5 md:w-3/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                            <input value={formik.values.cardNumber} type="text" name='cardNumber' placeholder='Credit card number' className='p-2 m-2 bg-transparent w-4/5 md:w-3/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
                             {formik.touched.cardNumber && formik.errors.cardNumber ? (
                                 <div className='text-red-700 mb-4'>{formik.errors.cardNumber}</div>
                             ) : <div className='mb-4'></div>}
@@ -104,22 +111,9 @@ export default function CheckoutPay(props) {
                                 <div className='text-red-700 mb-4'>{formik.errors.cw}</div>
                             ) : <div className='mb-4'></div>}
 
-                            <button className='w-2/6 md:w-1/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Back</button>
+                            <button type='button' className='w-2/6 md:w-1/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.goBack() }}>Back</button>
 
-                            <button type='submit' className='w-2/6 md:w-1/6 p-2  ml-1 rounded-lg font-bold textWhite' style={{ background: '#7f66de' }} onClick={() => {
-
-                                if (formik.isValid) {
-                                    const thongTinDatVe = new ThongTinDatVe()
-                                    thongTinDatVe.maLichChieu = props.match.params.id
-                                    thongTinDatVe.danhSachVe = dsGheDangDat
-                                    dispatch(datVe(thongTinDatVe))
-                                    history.push(`/checkoutfinish/${props.match.params.id}`)
-                                }
-                                else {
-                                    message.warning('Vui lòng điền đúng thông tin')
-                                }
-
-                            }}>Pay</button>
+                            <button type='submit' className='w-2/6 md:w-1/6 p-2  ml-1 rounded-lg font-bold textWhite' style={{ background: '#7f66de' }} >Pay</button>
 
                         </form>
 

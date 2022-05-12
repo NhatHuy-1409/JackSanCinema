@@ -37,7 +37,9 @@ export default function CheckoutInfo(props) {
             hoTen: Yup.string().required('Please enter your fullname').matches(/^[A-Z a-z]+$/, 'Fullname should be letter').trim(),
         }),
         onSubmit: values => {
-            console.log(values);
+            if(formik.isValid) {
+                history.push(`/checkoutpay/${props.match.params.id}`) 
+            }
         },
 
     })
@@ -90,28 +92,21 @@ export default function CheckoutInfo(props) {
                         </div>
                         <hr />
                         <form className='my-10' onSubmit={formik.handleSubmit}>
-                            <input type="text" name='hoTen' placeholder='YourName' className='p-2 m-2 bg-transparent w-4/5 md:w-3/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                            <input value={formik.values.hoTen} type="text" name='hoTen' placeholder='YourName' className='p-2 m-2 bg-transparent w-4/5 md:w-3/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
                             {formik.touched.hoTen && formik.errors.hoTen ? (
                                 <div className='text-red-700 mb-4'>{formik.errors.hoTen}</div>
                             ) : <div className='mb-4'></div>}
-                            <input type="text" name='soDt' placeholder='Phone' className='p-2 m-2 bg-transparent w-4/5 md:w-2/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                            <input value={formik.values.soDt} type="text" name='soDt' placeholder='Phone' className='p-2 m-2 bg-transparent w-4/5 md:w-2/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
                             {formik.touched.soDt && formik.errors.soDt ? (
                                 <div className='text-red-700 mb-4'>{formik.errors.soDt}</div>
                             ) : <div className='mb-4'></div>}
-                            <input type="text" name='email' placeholder='Email' className='p-2 m-2 bg-transparent w-4/5 md:w-2/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                            <input value={formik.values.email} type="text" name='email' placeholder='Email' className='p-2 m-2 bg-transparent w-4/5 md:w-2/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
                             {formik.touched.email && formik.errors.email ? (
                                 <div className='text-red-700 mb-4'>{formik.errors.email}</div>
                             ) : <div className='mb-4'></div>}
 
-                            <button className='w-2/6 md:w-1/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Back</button>
-                            <button type='submit' className='w-2/6 md:w-1/6 p-2  ml-1 rounded-lg font-bold textWhite' style={{ background: '#7f66de' }} onClick={() => {
-
-                                console.log(formik.isValid);
-                                if (formik.isValid) {
-                                    history.push(`/checkoutpay/${props.match.params.id}`) 
-                                }
-
-                            }}>Next</button>
+                            <button type='button'  className='w-2/6 md:w-1/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.goBack() }}>Back</button>
+                            <button type='submit' className='w-2/6 md:w-1/6 p-2  ml-1 rounded-lg font-bold textWhite' style={{ background: '#7f66de' }} >Next</button>
 
                         </form>
 
