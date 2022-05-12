@@ -1,6 +1,7 @@
 import { history } from "../../App";
 import { quanLyDatVeServices } from "../../services/QuanLyDatVeService";
 import { CHUYEN_TAB, DAT_GHE_ACTION, DAT_VE_ACTION, DAT_VE_HOAN_TAT, LAY_DANH_SACH_PHONG_VE_ACTION } from "../types/QuanLyDatVeType";
+import { hideLoadingAction, playLoadingAction } from "./LoadingAction/LoadingAction";
 // import { hideLoadingAction, playLoadingAction } from "../LoadingAction/LoadingAction";
 
 
@@ -24,17 +25,17 @@ export const layDanhSachPhongve = (maLichChieu) => {
 export const datVe = (thongTinDatVe) => {
     return async (dispatch) => {
         try {
-            // dispatch(playLoadingAction)
+            dispatch(playLoadingAction)
             const result = await quanLyDatVeServices.datVe(thongTinDatVe);
             //Đặt vé thành công load lại trang
             await dispatch(layDanhSachPhongve(thongTinDatVe.maLichChieu)) 
             await dispatch({type:DAT_VE_HOAN_TAT})
-            await dispatch({
-                type:CHUYEN_TAB,
-                tabNumber:'2'
-            })
+            // await dispatch({
+            //     type:CHUYEN_TAB,
+            //     tabNumber:'2'
+            // })
             // history.goBack()
-            // dispatch(hideLoadingAction)
+            dispatch(hideLoadingAction)
         }
         catch (error) {
             console.log(error);

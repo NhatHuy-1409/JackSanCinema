@@ -23,9 +23,7 @@ export default function Detail(props) {
         dispatch(GetFilmList())
         dispatch(GetInfoFilm(props.match.params.id))
     }
-    console.log(infoFilm);
     const { tenPhim, moTa, trailer, hinhAnh, maPhim } = infoFilm
-
     const renderActor = () => {
         return (
             <div className='text-center w-1/5 px-5 '>

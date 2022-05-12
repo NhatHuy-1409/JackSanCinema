@@ -21,8 +21,6 @@ export default function Select(props) {
             window.removeEventListener('resize', handleResize)
         }
     }, [])
-
-
     const callAPI = () => {
         // dispatch(GetFilmList())
         dispatch(GetInfoFilm(props.match.params.id))

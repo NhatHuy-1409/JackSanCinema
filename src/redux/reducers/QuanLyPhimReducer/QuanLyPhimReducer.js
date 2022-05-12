@@ -9,7 +9,6 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
     switch (action.type) {
 
         case GET_FILM_LIST:
-            console.log(action.filmList);
             state.arrFilm=action.filmList
             return { ...state }
         case GET_INFO_FILM:

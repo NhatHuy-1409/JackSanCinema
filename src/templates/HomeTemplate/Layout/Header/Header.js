@@ -1,15 +1,55 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import './Header.css'
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import { ShoppingCartOutlined, UserOutlined, LogoutOutlined, UserAddOutlined, DownOutlined } from '@ant-design/icons';
+import { history } from '../../../../App';
+import { Button, Dropdown, Menu, Space } from 'antd';
+import { TOKEN, USER_LOGIN } from '../../../../util/setting';
+import { Option } from 'antd/lib/mentions';
+import style from './header.module.css'
+import { Select } from 'antd';
+
+const menu = (
+    <Menu>
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" key={'1'} onClick={() => { history.push('/register') }}><UserOutlined /> View Profile</a>
+        </Menu.Item>
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" key={'2'} onClick={() => { history.push('/admin') }}><UserAddOutlined /> Dashboard</a>
+        </Menu.Item>
+        <Menu.Item>
+            <a target="_blank" rel="noopener noreferrer" key={'3'} onClick={() => {
+                localStorage.removeItem(USER_LOGIN)
+                localStorage.removeItem(TOKEN)
+                history.push('/home')
+            }}><LogoutOutlined /> Log Out</a>
+        </Menu.Item>
+    </Menu>
+);
+export const DropdownMenu = () => (
+    <Space wrap>
+        <Dropdown overlay={menu}>
+            <Button className='mx-1'>
+                <Space>
+                    {JSON.parse(localStorage.getItem(USER_LOGIN)).hoTen}
+                    <DownOutlined />
+                </Space>
+            </Button>
+
+        </Dropdown>
+
+    </Space>
+);
 
 export default function Header(props) {
 
     const [subMenu, setSubmenu] = useState(false)
-
+    // const handleChange = (value) => {
+    //     i18n.changeLanguage(value)
+    //   }
     return (
-        <header className=" p-4 dark:bg-coolGray-800 dark:text-coolGray-100  text-white fixed w-full " style={{
-            background: props.bgHeader
+        <header className="px-4 pt-4 pb-0 md:pb-4  dark:bg-coolGray-800 dark:text-coolGray-100  text-white fixed w-full " style={{
+            background: `${props.bgHeader}`
         }} >
             <div className="container flex justify-between h-16 mx-auto headerIcon">
                 <button className="p-4 lg:hidden" onClick={() => setSubmenu(!subMenu)}>
@@ -32,14 +72,30 @@ export default function Header(props) {
                         <NavLink to="/contact" className="menuItem flex items-center px-4 -mb-1 border-b-2 text-white" activeClassName='border-b-pink-500'>CINEMAS</NavLink>
                     </li>
                     <li className="flex">
-                        <NavLink to="/news" className="menuItem flex items-center px-4 -mb-1 border-b-2 text-white" activeClassName=' border-b-pink-500'>OFFERS</NavLink>
+                        <NavLink to="/checkouthistory" className="menuItem flex items-center px-4 -mb-1 border-b-2 text-white" activeClassName=' border-b-pink-500'>HISTORY</NavLink>
                     </li>
 
                 </ul>
 
                 <div className="items-center flex-shrink-0 hidden lg:flex">
-                    <button className="self-center px-8 py-3 rounded">Don't have account yet?<br />Please Sign Up here</button>
-                    <button className="btnSignIn self-center px-8 py-3 ">SIGN IN</button>
+                    {localStorage.getItem(TOKEN) ?
+                        <Fragment>
+                            <UserOutlined className={`${style.anticon} items-center`} />
+                            {/* <p className='mt-1 mb-0 pl-1 text-lg'>{JSON.parse(localStorage.getItem(USER_LOGIN)).hoTen}</p> */}
+                            <DropdownMenu />
+
+                        </Fragment>
+                        :
+                        <Fragment>
+                            <button className="self-center px-8 py-3 rounded" onClick={() => {
+                                history.push('/register')
+                            }}>Don't have account yet?<br />Please Sign Up here</button>
+                            <button className="btnSignIn self-center px-8 py-3 " onClick={() => {
+                                history.push('/login')
+                            }}>SIGN IN</button>
+                        </Fragment>
+                    }
+
                 </div>
                 <button className="p-4 lg:hidden">
                     {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-coolGray-100">
@@ -48,22 +104,43 @@ export default function Header(props) {
                     <ShoppingCartOutlined className='text-2xl headerIcon' />
                 </button>
             </div>
-            <ul className={`${subMenu ? '' : 'hidden'} lg:hidden `} >
-                <li className="">
-                    <NavLink to="/home" className="menuItem  px-4 -mb-1 border-b-2 w-4/5 block m-auto text-center mt-4 text-white " activeClassName='border-b-pink-500'>MOVIES</NavLink>
-                </li>
-                <li className="">
-                    <NavLink to="/contact" className="menuItem  px-4 -mb-1 border-b-2 w-4/5 block m-auto text-center mt-4 text-white" activeClassName='border-b-pink-500'>CINEMAS</NavLink>
-                </li>
-                <li className="">
-                    <NavLink to="/news" className="menuItem  px-4 -mb-1 border-b-2 w-4/5 block m-auto text-center mt-4 text-white" activeClassName=' border-b-pink-500'>OFFERS</NavLink>
-                </li>
+            <div className={`${subMenu ? '' : 'hidden'} lg:hidden w-full absolute left-0 `} style={{
+                background: `${props.bgHeader}`
+            }}>
+                <ul className={``} >
+                    <li className="">
+                        <NavLink to="/home" className="menuItem  px-4 -mb-1 border-b-2 w-4/5 block m-auto text-center mt-4 text-white " activeClassName='border-b-pink-500'>MOVIES</NavLink>
+                    </li>
+                    <li className="">
+                        <NavLink to="/contact" className="menuItem  px-4 -mb-1 border-b-2 w-4/5 block m-auto text-center mt-4 text-white" activeClassName='border-b-pink-500'>CINEMAS</NavLink>
+                    </li>
+                    <li className="">
+                        <NavLink to="/checkouthistory" className="menuItem  px-4 -mb-1 border-b-2 w-4/5 block m-auto text-center mt-4 text-white" activeClassName=' border-b-pink-500'>HISTORY</NavLink>
+                    </li>
 
-            </ul>
-            <div className={`${subMenu ? '' : 'hidden'} lg:hidden items-center flex-shrink-0 text-center`} >
-                <button className="self-center px-8 py-3 rounded">Don't have account yet?<br />Please Sign Up here</button>
-                <button className="btnSignIn self-center px-8 py-3 " style={{ verticalAlign: 'text-top' }}>SIGN IN</button>
+                </ul>
+                <div className={`items-center flex-shrink-0 text-center`} >
+                    {localStorage.getItem(TOKEN) ?
+                        <Fragment>
+                            <UserOutlined className={`${style.anticon} items-center`} />
+                            {/* <p className='mt-1 mb-0 pl-1 text-lg'>{JSON.parse(localStorage.getItem(USER_LOGIN)).hoTen}</p> */}
+                            <DropdownMenu />
+
+                        </Fragment>
+                        :
+                        <Fragment>
+                            <button className="self-center px-8 py-3 rounded" onClick={() => {
+                                history.push('/register')
+                            }}>Don't have account yet?<br />Please Sign Up here</button>
+                            <button className="btnSignIn self-center px-8 py-3 " style={{ verticalAlign: 'text-top' }} onClick={() => {
+                                history.push('/login')
+                            }}>SIGN IN</button>
+                        </Fragment>
+                    }
+
+                </div>
             </div>
+
         </header>
 
     )

@@ -16,7 +16,7 @@
     z-index: 0;
 }
 .progressCheckout i::after {
-    background: linear-gradient(124deg, rgba(127, 102, 222, 1) 25%, rgba(200, 35, 93, 1) 73%) !important;
+    background: linear-gradient(248deg, rgba(127, 102, 222, 1) 25%, rgba(200, 35, 93, 1) 73%) !important;
     content: "";
     width: 35%;
     position: absolute;
@@ -25,7 +25,15 @@
 }
 .progressCheckout.progressInfo i::after {
     width: 65%;
-    background: linear-gradient(124deg, rgba(127, 102, 222, 1) 5%, rgba(200, 35, 93, 1) 73%) !important;
+    background: linear-gradient(248deg, rgba(127, 102, 222, 1) 5%, rgba(200, 35, 93, 1) 73%) !important;
+}
+.progressCheckout.progressPay i::after {
+    width: 98%;
+    background: linear-gradient(248deg, rgba(127, 102, 222, 1) 5%, rgba(200, 35, 93, 1) 73%) !important;
+}
+.progressCheckout.progressFinish i::after {
+    width: 98%;
+    background: rgba(200, 35, 93, 1) !important;
 }
 .progressSeat {
     background: #c8235d !important;

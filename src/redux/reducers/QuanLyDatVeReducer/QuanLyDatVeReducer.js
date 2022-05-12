@@ -1,10 +1,10 @@
 import { ThongTinLichChieu } from "../../../_core/models/ThongTinPhongVe"
-import { CHUYEN_TAB, DAT_VE_ACTION, DAT_VE_HOAN_TAT, LAY_DANH_SACH_PHONG_VE_ACTION } from "../../types/QuanLyDatVeType"
+import { CHUYEN_TAB, DAT_VE_ACTION, DAT_VE_HOAN_TAT, LAY_DANH_SACH_PHONG_VE_ACTION, RESET_GHE_DANG_DAT, XOA_GHE_DANG_DAT } from "../../types/QuanLyDatVeType"
 
 const stateDefault = {
     chiTietPhongVe: new ThongTinLichChieu(),
     dsGheDangDat: [],
-    tabActive : '1',
+    tabActive: '1',
 }
 
 export default (state = stateDefault, action) => {
@@ -24,10 +24,17 @@ export default (state = stateDefault, action) => {
         case DAT_VE_HOAN_TAT:
             state.dsGheDangDat = []
             return { ...state }
-        case CHUYEN_TAB:     
+        case CHUYEN_TAB:
             state.tabActive = action.tabNumber
             return { ...state }
-        default:
+        case XOA_GHE_DANG_DAT:
+            let newDSGheDangDat = state.dsGheDangDat.filter(ghe => ghe !== action.ghe)
+            state.dsGheDangDat = newDSGheDangDat
+            return { ...state }
+        case RESET_GHE_DANG_DAT:
+            state.dsGheDangDat = []
+            return { ...state }
+        default:    
             return state
     }
 }

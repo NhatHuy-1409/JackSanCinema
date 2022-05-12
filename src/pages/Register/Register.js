@@ -31,6 +31,7 @@ export default function Register() {
             hoTen: Yup.string().required('Please enter your fullname').matches(/^[A-Z a-z]+$/, 'Fullname should be letter').trim(),
         }),
         onSubmit: values => {
+            // dang ki thanh cong
             console.log(values);
             dispatch(dangKy(values))
         },

@@ -7,22 +7,40 @@ import { DAT_VE_ACTION } from '../../../redux/types/QuanLyDatVeType';
 import { CheckOutlined, UserOutlined, HomeOutlined, CloseCircleOutlined, RightOutlined, SketchOutlined } from '@ant-design/icons'
 import { history } from '../../../App';
 import '../CheckoutPay/CheckoutPay.css'
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
+import { GROUP_ID } from '../../../util/setting';
+import { message } from 'antd';
+
 export default function CheckoutInfo(props) {
 
     const { arrFilm, infoFilm } = useSelector(state => state.QuanLyPhimReducer)
-
     const { chiTietPhongVe, dsGheDangDat } = useSelector(state => state.QuanLyDatVeReducer)
     const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
-
     let dispatch = useDispatch()
     useEffect(() => {
         dispatch(layDanhSachPhongve(props.match.params.id))
     }, [])
     const { danhSachGhe, thongTinPhim } = chiTietPhongVe
-
     const { tenPhim, moTa, trailer, hinhAnh, ngayKhoiChieu } = infoFilm
-    console.log(infoFilm);
-    console.log(dsGheDangDat);
+
+
+    const formik = useFormik({
+        initialValues: {
+            email: "",
+            soDt: "",
+            hoTen: ""
+        },
+        validationSchema: Yup.object({
+            email: Yup.string().required('Please enter your email').email('Please enter a valid email address'),
+            soDt: Yup.string().required('Please enter your phone number').matches(/^[0-9]+$/, 'Phonenumber should be number'),
+            hoTen: Yup.string().required('Please enter your fullname').matches(/^[A-Z a-z]+$/, 'Fullname should be letter').trim(),
+        }),
+        onSubmit: values => {
+            console.log(values);
+        },
+
+    })
     return (
         <div className='checkoutPay checkout pt-28 container '>
             <div className='checkoutPay-top block md:flex'>
@@ -71,16 +89,32 @@ export default function CheckoutInfo(props) {
                             <RightOutlined className='text-xl text-white rightIcon' />
                         </div>
                         <hr />
-                        <form className='my-10'>
-                            <input type="text" placeholder='YourName' className='p-2 m-2 bg-transparent w-4/5 md:w-3/5' />
-                            <input type="text" placeholder='Phone' className='p-2 m-2 bg-transparent w-4/5 md:w-2/5' />
-                            <input type="text" placeholder='Email' className='p-2 m-2 bg-transparent w-4/5 md:w-2/5' />
+                        <form className='my-10' onSubmit={formik.handleSubmit}>
+                            <input type="text" name='hoTen' placeholder='YourName' className='p-2 m-2 bg-transparent w-4/5 md:w-3/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                            {formik.touched.hoTen && formik.errors.hoTen ? (
+                                <div className='text-red-700 mb-4'>{formik.errors.hoTen}</div>
+                            ) : <div className='mb-4'></div>}
+                            <input type="text" name='soDt' placeholder='Phone' className='p-2 m-2 bg-transparent w-4/5 md:w-2/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                            {formik.touched.soDt && formik.errors.soDt ? (
+                                <div className='text-red-700 mb-4'>{formik.errors.soDt}</div>
+                            ) : <div className='mb-4'></div>}
+                            <input type="text" name='email' placeholder='Email' className='p-2 m-2 bg-transparent w-4/5 md:w-2/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
+                            {formik.touched.email && formik.errors.email ? (
+                                <div className='text-red-700 mb-4'>{formik.errors.email}</div>
+                            ) : <div className='mb-4'></div>}
+
+                            <button className='w-2/6 md:w-1/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Back</button>
+                            <button type='submit' className='w-2/6 md:w-1/6 p-2  ml-1 rounded-lg font-bold textWhite' style={{ background: '#7f66de' }} onClick={() => {
+
+                                console.log(formik.isValid);
+                                if (formik.isValid) {
+                                    history.push(`/checkoutpay/${props.match.params.id}`) 
+                                }
+
+                            }}>Next</button>
+
                         </form>
 
-                        <div>
-                            <button className='w-2/6 md:w-1/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Back</button>
-                            <button className='w-2/6 md:w-1/6 p-2  ml-1 rounded-lg font-bold textWhite' style={{ background: '#7f66de' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Next</button>
-                        </div>
 
                     </div>
                 </div>
@@ -92,7 +126,7 @@ export default function CheckoutInfo(props) {
                             <div className="flex">
                                 <div className="w-4/5">
                                     {dsGheDangDat.map((ghe) => {
-                                        return <span className='textWhite'>
+                                        return <span key={ghe.maGhe} className='textWhite'>
                                             Seat {ghe.tenGhe} -
                                         </span>
                                     })}

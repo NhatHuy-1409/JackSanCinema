@@ -19,10 +19,7 @@ export default function CheckoutFinish(props) {
         dispatch(layDanhSachPhongve(props.match.params.id))
     }, [])
     const { danhSachGhe, thongTinPhim } = chiTietPhongVe
-
     const { tenPhim, moTa, trailer, hinhAnh, ngayKhoiChieu } = infoFilm
-    console.log(infoFilm);
-    console.log(dsGheDangDat);
     return (
         <div className='checkoutPay checkout pt-28 container '>
             <div className='checkoutPay-top block md:flex'>
@@ -37,11 +34,11 @@ export default function CheckoutFinish(props) {
                         <div className='w-5/6 '>
                             <h3 className='pt-3 textGray text-xl '>Ticket booking</h3>
                             <h2 className='textWhite font-bold mt-5 md:mt-10'>Fill information</h2>
-                            <div className='flex justify-between  w-48 lg:w-96 relative progressCheckout progressInfo'>
+                            <div className='flex justify-between  w-48 lg:w-96 relative progressCheckout progressFinish'>
                                 <p className=' w-4 h-4 mb-0 rounded-full progressSeat'></p>
                                 <p className=' w-4 h-4 mb-0 rounded-full progressSeat'></p>
-                                <p className=' w-4 h-4 mb-0 rounded-full'></p>
-                                <p className=' w-4 h-4 mb-0 rounded-full'></p>
+                                <p className=' w-4 h-4 mb-0 rounded-full progressSeat'></p>
+                                <p className=' w-4 h-4 mb-0 rounded-full progressSeat'></p>
                                 <i className='absolute bg-orange-700 w-full top-1/2 z-0'></i>
                             </div>
                         </div>
@@ -94,6 +91,9 @@ export default function CheckoutFinish(props) {
 
                         <div>
                             <button className='w-3/6 sm:w-2/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Back to homepage</button>
+                            <button className='w-3/6 sm:w-2/6 p-2 mt-5 rounded-lg font-bold textWhite ml-2' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => {
+                                history.push(`/checkouthistory`)
+                            }}>Booking history</button>
 
                         </div>
 
@@ -113,7 +113,7 @@ export default function CheckoutFinish(props) {
                             <li><span className='textGray'>Room:     </span><span className='textWhite pl-4'></span></li>
                             <li><span className='textGray'>Seat:     </span><span className='textWhite pl-4'>
                                 {dsGheDangDat.map((ghe) => {
-                                    return <span className='textWhite'>
+                                    return <span key={ghe.maGhe} className='textWhite'>
                                         {ghe.tenGhe} -
                                     </span>
                                 })}

@@ -6,11 +6,7 @@ import HomeCarousel from "./Layout/HomeCarousel/HomeCarousel"
 
 export const HomeTemplate = (props) => {
     const [bgHeader, setBgHeader] = useState('#00000078')
-
-    console.log('re-render');
-   
     const onScroll = (e) => {
-        console.log(window.scrollY);
         if(window.scrollY > 350){
             setBgHeader('#000000')
         }else{

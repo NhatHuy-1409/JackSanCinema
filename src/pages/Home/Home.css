@@ -47,7 +47,7 @@
     header{
         /* background: unset !important; */
         /* z-index: 0; */
-        height: 100px !important;
+        height: 80px !important;
     }
     .homeCarousel .ant-carousel .slick-dots-bottom{
         display: none !important;

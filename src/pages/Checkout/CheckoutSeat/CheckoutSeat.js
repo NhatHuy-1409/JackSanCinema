@@ -2,26 +2,34 @@ import React, { Fragment, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import '../Checkout.css'
 import { LeftCircleOutlined } from '@ant-design/icons';
-import { layDanhSachPhongve } from '../../../redux/actions/QuanLyDatVeAction';
-import { DAT_VE_ACTION } from '../../../redux/types/QuanLyDatVeType';
+import { datVe, layDanhSachPhongve } from '../../../redux/actions/QuanLyDatVeAction';
+import { DAT_VE_ACTION, RESET_GHE_DANG_DAT, XOA_GHE_DANG_DAT } from '../../../redux/types/QuanLyDatVeType';
 import { CheckOutlined, UserOutlined, HomeOutlined, CloseCircleOutlined } from '@ant-design/icons'
 import './CheckoutSeat.css'
 import { history } from '../../../App';
+import { GetInfoFilm } from '../../../redux/actions/QuanLyPhimActions';
+import { Redirect } from 'react-router-dom';
+import { ThongTinDatVe } from '../../../_core/models/ThongTinDatVe';
+import { message } from 'antd';
 export default function CheckoutSeat(props) {
 
   const { arrFilm, infoFilm } = useSelector(state => state.QuanLyPhimReducer)
-
   const { chiTietPhongVe, dsGheDangDat } = useSelector(state => state.QuanLyDatVeReducer)
   const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
-
   let dispatch = useDispatch()
   useEffect(() => {
+    // dispatch(GetInfoFilm(props.match.params.id));
+    // if (infoFilm === {}) {
+    //   history.goBack()
+    // }
     dispatch(layDanhSachPhongve(props.match.params.id))
+    dispatch({
+      type: RESET_GHE_DANG_DAT,
+    })
   }, [])
   const { danhSachGhe, thongTinPhim } = chiTietPhongVe
 
   const { tenPhim, moTa, trailer, hinhAnh, ngayKhoiChieu } = infoFilm
-  console.log(infoFilm);
   const renderSeats = () => {
     return danhSachGhe.map((ghe, index) => {
       let classGheVip = ghe.loaiGhe === 'Vip' ? 'gheVip' : '';
@@ -46,7 +54,6 @@ export default function CheckoutSeat(props) {
       </Fragment>
     })
   }
-  console.log(dsGheDangDat);
   return (
     <div className='checkoutSeat checkout pt-28 container '>
       <div className='checkoutSeat-top block md:flex'>
@@ -124,16 +131,32 @@ export default function CheckoutSeat(props) {
             <h2 className='textWhite text-lg'>Selecting</h2>
             <hr />
             <div className='my-5'>
-              {dsGheDangDat.map((ghe) => {
-                return <div className='flex p-2 m-2 rounded-lg' style={{ background: '#4a4a4a' }}>
-                  <button className='ghe gheDangDat w-1/5'><span style={{ display: 'block', marginTop: '-4px' }}>{ghe.tenGhe}</span></button>
+              {dsGheDangDat.length === 0 ?
+                <div className='flex p-2 m-2 rounded-lg items-center' style={{ background: '#4a4a4a' }}>
+                  <button className='ghe gheDangDat w-1/5'><span style={{ display: 'block', marginTop: '-4px' }}>0</span></button>
                   <div className='w-3/5 ml-2'>
-                    <h3 className='textGray'>{tenPhim}</h3>
-                    <h4 className='textWhite font-bold'>{ghe.giaVe} VND</h4>
+                    <h3 className='textGray'>0</h3>
+                    <h4 className='textWhite font-bold'>0 VND</h4>
                   </div>
-                  <CloseCircleOutlined className='w-1/5 text-lg textWhite cursor-pointer' />
+                  <CloseCircleOutlined className='w-1/5 text-lg textWhite cursor-pointer closeCircleOutlined' />
                 </div>
-              })}
+                :
+                dsGheDangDat.map((ghe) => {
+                  return <div key={ghe.maGhe} className='flex p-2 m-2 rounded-lg items-center' style={{ background: '#4a4a4a' }}>
+                    <button className='ghe gheDangDat w-1/5'><span style={{ display: 'block', marginTop: '-4px' }}>{ghe.tenGhe}</span></button>
+                    <div className='w-3/5 ml-2'>
+                      <h3 className='textGray'>{tenPhim}</h3>
+                      <h4 className='textWhite font-bold'>{ghe.giaVe} VND</h4>
+                    </div>
+                    <CloseCircleOutlined className='w-1/5 text-lg textWhite cursor-pointer closeCircleOutlined' onClick={() => {
+                      dispatch({
+                        type: XOA_GHE_DANG_DAT,
+                        ghe: ghe
+                      })
+
+                    }} />
+                  </div>
+                })}
 
             </div>
             <hr />
@@ -146,7 +169,17 @@ export default function CheckoutSeat(props) {
                   }, 0)
                 }
               </span>  VNĐ</p>
-              <button className='w-4/5 p-3 block m-auto rounded-lg font-bold textWhite' style={{ background: '#c8235d' }} onClick={() => { history.push(`/checkoutinfo/${props.match.params.id}`) }}>Checkout</button>
+              <button className='w-4/5 p-3 block m-auto rounded-lg font-bold textWhite' style={{ background: '#c8235d' }} onClick={() => {
+                if (dsGheDangDat.length !== 0) {
+
+                  // history.push(`/checkouthistory`)
+                  history.push(`/checkoutinfo/${props.match.params.id}`)
+                }
+                else {
+                  message.warning('Vui lòng chọn ghế trước khi đặt vé !')
+                }
+                
+              }}>Checkout</button>
             </div>
           </div>
 
