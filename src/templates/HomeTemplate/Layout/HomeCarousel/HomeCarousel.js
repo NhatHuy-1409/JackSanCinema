@@ -68,8 +68,8 @@ export default function HomeCarousel() {
                 
                 </div>
                 <div className='carouselContent container'>
-                        <h3 className='text-white text-xl'>{index} | kk | kk</h3>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Doloribus a nostrum ad explicabo alias sapiente nobis ducimus quaerat vel suscipit!</p>
+                        <h3 className='text-white text-xl'>0{index+1} </h3>
+                        <p className='text-2xl'>Welcome to Jack's Cinema!</p>
                     </div>
             </div>
         })

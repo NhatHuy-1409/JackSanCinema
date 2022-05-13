@@ -18,3 +18,42 @@ header .btnSignIn{
 .headerIcon{
     color: white;
 }
+.btnMenuCinema {
+    border-bottom:2px solid #fff !important;
+}
+.btnMenuCinema p,.btnMenuCinema .anticon {
+    transition: all .3s;
+}
+.btnMenuCinema .anticon{
+    color: white!important;
+    display: block;
+}
+.btnMenuCinema .ant-space-align-center{
+    align-items: baseline;
+}
+.btnMenuCinema:active {
+    border-bottom:2px solid #e34895 !important;
+    outline: none;
+    box-shadow: none!important;
+}
+.btnMenuCinema:hover p,.btnMenuCinema:hover .anticon {
+    color: #c8235d !important;
+}
+
+@media screen and (max-width: 768px) {
+    .btnMenuCinema .ant-space{
+        display: block;
+    }
+    .btnMenuCinema .anticon{
+        display: none;
+    }
+    .btnMenuCinema{
+        width: 80% !important;
+        display: block !important;
+        margin: auto;
+        margin-top: 1rem;
+    }
+    .spaceBtnMenuCinema{
+        display: block !important;
+    }
+}

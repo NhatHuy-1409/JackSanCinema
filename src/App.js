@@ -17,6 +17,7 @@ import CheckoutInfo from './pages/Checkout/CheckoutInfo/CheckoutInfo';
 import CheckoutFinish from './pages/Checkout/CheckoutFinish/CheckoutFinish';
 import CheckoutHistory from './pages/Checkout/CheckoutHistory/CheckoutHistory';
 import Loading from './components/Loading/Loading';
+import Cinema from './pages/Cinema/Cinema';
 
 export const history = createBrowserHistory()
 
@@ -27,7 +28,7 @@ function App() {
       <Loading></Loading>
         <Switch>
           <HomeTemplate path='/home' component={Home} />
-          <HomeTemplate path='/contact' component={Contact} />
+          <HomeTemplate path='/cinema/:id' component={Cinema} />
           <HomeTemplate path='/news' component={News} />
           <HomeTemplate path='/detail/:id' component={Detail} />
           <HomeTemplate path='/select/:id' component={Select} />
