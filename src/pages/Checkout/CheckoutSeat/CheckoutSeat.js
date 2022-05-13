@@ -11,6 +11,8 @@ import { GetInfoFilm } from '../../../redux/actions/QuanLyPhimActions';
 import { Redirect } from 'react-router-dom';
 import { ThongTinDatVe } from '../../../_core/models/ThongTinDatVe';
 import { message } from 'antd';
+import { USER_LOGIN } from '../../../util/setting';
+import moment from 'moment';
 export default function CheckoutSeat(props) {
 
   const { arrFilm, infoFilm } = useSelector(state => state.QuanLyPhimReducer)
@@ -22,6 +24,7 @@ export default function CheckoutSeat(props) {
     // if (infoFilm === {}) {
     //   history.goBack()
     // }
+    window.scrollTo(0, 0);
     dispatch(layDanhSachPhongve(props.match.params.id))
     dispatch({
       type: RESET_GHE_DANG_DAT,
@@ -54,6 +57,11 @@ export default function CheckoutSeat(props) {
       </Fragment>
     })
   }
+
+  if (!localStorage.getItem(USER_LOGIN)) {
+    message.warning('Hãy đăng nhập để sử dụng chức năng này!')
+    return <Redirect to='/login' />
+}
   return (
     <div className='checkoutSeat checkout pt-28 container '>
       <div className='checkoutSeat-top block md:flex'>
@@ -86,9 +94,7 @@ export default function CheckoutSeat(props) {
               </div>
               <div className='w-2/3 pl-4'>
                 <h2 className='textWhite font-bold text-2xl '>{tenPhim}</h2>
-                <p className='textGray'>
-                  {ngayKhoiChieu}
-                </p>
+                <p className='text-amber-400'><strong className="textGray">Giờ chiếu:</strong> {moment(ngayKhoiChieu).format('hh:mm A')}<strong className="textGray"> - Ngày chiếu:</strong> {moment(ngayKhoiChieu).format('DD-MM-YYYY')}</p>
               </div>
             </div>
           </div>
@@ -132,13 +138,14 @@ export default function CheckoutSeat(props) {
             <hr />
             <div className='my-5'>
               {dsGheDangDat.length === 0 ?
-                <div className='flex p-2 m-2 rounded-lg items-center' style={{ background: '#4a4a4a' }}>
-                  <button className='ghe gheDangDat w-1/5'><span style={{ display: 'block', marginTop: '-4px' }}>0</span></button>
+                <div className='flex p-2 m-2 rounded-lg items-center textWhite' style={{ background: '#4a4a4a' }}>
+                  {/* <button className='ghe gheDangDat w-1/5'><span style={{ display: 'block', marginTop: '-4px' }}>0</span></button>
                   <div className='w-3/5 ml-2'>
                     <h3 className='textGray'>0</h3>
                     <h4 className='textWhite font-bold'>0 VND</h4>
                   </div>
-                  <CloseCircleOutlined className='w-1/5 text-lg textWhite cursor-pointer closeCircleOutlined' />
+                  <CloseCircleOutlined className='w-1/5 text-lg textWhite cursor-pointer closeCircleOutlined' /> */}
+                  Hãy chọn ghế ngồi của bạn!
                 </div>
                 :
                 dsGheDangDat.map((ghe) => {

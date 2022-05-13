@@ -11,6 +11,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { GROUP_ID } from '../../../util/setting';
 import { message } from 'antd';
+import moment from 'moment';
 
 export default function CheckoutInfo(props) {
 
@@ -19,12 +20,11 @@ export default function CheckoutInfo(props) {
     const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
     let dispatch = useDispatch()
     useEffect(() => {
+        window.scrollTo(0, 0);
         dispatch(layDanhSachPhongve(props.match.params.id))
     }, [])
     const { danhSachGhe, thongTinPhim } = chiTietPhongVe
     const { tenPhim, moTa, trailer, hinhAnh, ngayKhoiChieu } = infoFilm
-
-
     const formik = useFormik({
         initialValues: {
             email: "",
@@ -37,8 +37,8 @@ export default function CheckoutInfo(props) {
             hoTen: Yup.string().required('Please enter your fullname').matches(/^[A-Z a-z]+$/, 'Fullname should be letter').trim(),
         }),
         onSubmit: values => {
-            if(formik.isValid) {
-                history.push(`/checkoutpay/${props.match.params.id}`) 
+            if (formik.isValid) {
+                history.push(`/checkoutpay/${props.match.params.id}`)
             }
         },
 
@@ -75,9 +75,7 @@ export default function CheckoutInfo(props) {
                             </div>
                             <div className='w-2/3 pl-4'>
                                 <h2 className='textWhite font-bold text-2xl '>{tenPhim}</h2>
-                                <p className='textGray'>
-                                    {ngayKhoiChieu}
-                                </p>
+                                <p className='text-amber-400'><strong className="textGray">Giờ chiếu:</strong> {moment(ngayKhoiChieu).format('hh:mm A')}<strong className="textGray"> - Ngày chiếu:</strong> {moment(ngayKhoiChieu).format('DD-MM-YYYY')}</p>
                             </div>
                         </div>
                     </div>
@@ -94,18 +92,18 @@ export default function CheckoutInfo(props) {
                         <form className='my-10' onSubmit={formik.handleSubmit}>
                             <input value={formik.values.hoTen} type="text" name='hoTen' placeholder='YourName' className='p-2 m-2 bg-transparent w-4/5 md:w-3/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
                             {formik.touched.hoTen && formik.errors.hoTen ? (
-                                <div className='text-red-700 mb-4'>{formik.errors.hoTen}</div>
+                                <div className='text-red-700 mb-4 pl-2'>{formik.errors.hoTen}</div>
                             ) : <div className='mb-4'></div>}
                             <input value={formik.values.soDt} type="text" name='soDt' placeholder='Phone' className='p-2 m-2 bg-transparent w-4/5 md:w-2/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
                             {formik.touched.soDt && formik.errors.soDt ? (
-                                <div className='text-red-700 mb-4'>{formik.errors.soDt}</div>
+                                <div className='text-red-700 mb-4 pl-2'>{formik.errors.soDt}</div>
                             ) : <div className='mb-4'></div>}
                             <input value={formik.values.email} type="text" name='email' placeholder='Email' className='p-2 m-2 bg-transparent w-4/5 md:w-2/5' onChange={formik.handleChange} onBlur={formik.handleBlur} />
                             {formik.touched.email && formik.errors.email ? (
-                                <div className='text-red-700 mb-4'>{formik.errors.email}</div>
+                                <div className='text-red-700 mb-4 pl-2'>{formik.errors.email}</div>
                             ) : <div className='mb-4'></div>}
 
-                            <button type='button'  className='w-2/6 md:w-1/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.goBack() }}>Back</button>
+                            <button type='button' className='w-2/6 md:w-1/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.goBack() }}>Back</button>
                             <button type='submit' className='w-2/6 md:w-1/6 p-2  ml-1 rounded-lg font-bold textWhite' style={{ background: '#7f66de' }} >Next</button>
 
                         </form>
@@ -120,12 +118,13 @@ export default function CheckoutInfo(props) {
                         <div className='my-5'>
                             <div className="flex">
                                 <div className="w-4/5">
-                                    {dsGheDangDat.map((ghe) => {
-                                        return <span key={ghe.maGhe} className='textWhite'>
-                                            Seat {ghe.tenGhe} -
+                                    <p className='textGray'>Seat: {dsGheDangDat.map((ghe) => {
+                                        return <span key={ghe.maGhe} className='text-amber-400'>
+                                             {` [${ghe.tenGhe}] `} 
                                         </span>
-                                    })}
-                                    <p className='textGray'>Cinema: Ten rap</p>
+                                    })}</p>
+                                    
+                                    <p className='textGray'>Cinema: <span className='textWhite'>{`${thongTinPhim.tenRap}-${thongTinPhim.tenCumRap}`}</span></p>
                                 </div>
                                 <div className="w-1/5">
                                     <div className="flex items-center bg-slate-400 rounded justify-between p-2">

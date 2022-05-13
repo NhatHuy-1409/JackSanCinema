@@ -16,6 +16,7 @@ export default function Detail(props) {
     }, [])
     useEffect(() => {
         // Chỉ khi thay đổi phim trong detail page
+        window.scrollTo(0, 0);
         dispatch(GetInfoFilm(props.match.params.id))
     }, [props.match.params.id])
 

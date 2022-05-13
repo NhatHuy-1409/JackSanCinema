@@ -15,6 +15,7 @@ export default function Home(props) {
   const arrFilmRank = arrFilm.filter((film, index) => index < 5)
   let dispatch = useDispatch()
   useEffect(() => {
+    window.scrollTo(0, 0);
     callAPI()
   }, [])
   const callAPI = () => {

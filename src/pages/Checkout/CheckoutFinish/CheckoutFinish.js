@@ -7,15 +7,16 @@ import { DAT_VE_ACTION } from '../../../redux/types/QuanLyDatVeType';
 import { CheckOutlined, UserOutlined, HomeOutlined, CloseCircleOutlined, RightOutlined, SketchOutlined, QrcodeOutlined } from '@ant-design/icons'
 import { history } from '../../../App';
 import '../CheckoutPay/CheckoutPay.css'
+import moment from 'moment';
 export default function CheckoutFinish(props) {
 
     const { arrFilm, infoFilm } = useSelector(state => state.QuanLyPhimReducer)
 
     const { chiTietPhongVe, dsGheDangDat } = useSelector(state => state.QuanLyDatVeReducer)
     const { userLogin } = useSelector(state => state.QuanLyNguoiDungReducer)
-
     let dispatch = useDispatch()
     useEffect(() => {
+        window.scrollTo(0, 0);
         dispatch(layDanhSachPhongve(props.match.params.id))
     }, [])
     const { danhSachGhe, thongTinPhim } = chiTietPhongVe
@@ -52,9 +53,7 @@ export default function CheckoutFinish(props) {
                             </div>
                             <div className='w-2/3 pl-4'>
                                 <h2 className='textWhite font-bold text-2xl '>{tenPhim}</h2>
-                                <p className='textGray'>
-                                    {ngayKhoiChieu}
-                                </p>
+                                <p className='text-amber-400'><strong className="textGray">Giờ chiếu:</strong> {moment(ngayKhoiChieu).format('hh:mm A')}<strong className="textGray"> - Ngày chiếu:</strong> {moment(ngayKhoiChieu).format('DD-MM-YYYY')}</p>
                             </div>
                         </div>
                     </div>
@@ -90,7 +89,7 @@ export default function CheckoutFinish(props) {
 
 
                         <div>
-                            <button className='w-3/6 sm:w-2/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.push(`/checkoutpay/${props.match.params.id}`) }}>Back to homepage</button>
+                            <button className='w-3/6 sm:w-2/6 p-2 mt-5 rounded-lg font-bold textWhite' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => { history.push(`/home`) }}>Back to homepage</button>
                             <button className='w-3/6 sm:w-2/6 p-2 mt-5 rounded-lg font-bold textWhite ml-2' style={{ background: 'transparent', border: '1px solid #777777' }} onClick={() => {
                                 history.push(`/checkouthistory`)
                             }}>Booking history</button>
@@ -108,13 +107,12 @@ export default function CheckoutFinish(props) {
 
                     <div className=' bgCheckout p-0 ' style={{ borderRadius: '0 0 10px 10px' }}>
                         <ul>
-                            <li><span className='textGray'>Time:     </span><span className='textWhite pl-4'>{ngayKhoiChieu}</span></li>
-                            <li><span className='textGray'>Cinema:     </span><span className='textWhite pl-4'></span></li>
-                            <li><span className='textGray'>Room:     </span><span className='textWhite pl-4'></span></li>
-                            <li><span className='textGray'>Seat:     </span><span className='textWhite pl-4'>
+                            <li><span className='textGray'>Time:     </span><span className='textWhite pl-4'> {moment(ngayKhoiChieu).format('hh:mm A')} - {moment(ngayKhoiChieu).format('DD-MM-YYYY')}</span></li>
+                            <li><span className='textGray'>Cinema:     </span><span className='textWhite pl-4'>{`${thongTinPhim.tenRap}-${thongTinPhim.tenCumRap}`}</span></li>
+                            <li><span className='textGray'>Seat:    </span><span className='textWhite pl-4'>
                                 {dsGheDangDat.map((ghe) => {
                                     return <span key={ghe.maGhe} className='textWhite'>
-                                        {ghe.tenGhe} -
+                                        {` [${ghe.tenGhe}] `}
                                     </span>
                                 })}
                             </span></li>
@@ -122,7 +120,7 @@ export default function CheckoutFinish(props) {
                                 dsGheDangDat.reduce((tongTien, ghe, index) => {
                                     return tongTien += ghe.giaVe
                                 }, 0)
-                            }</span></li>
+                            } VND</span> </li>
                         </ul>
                     </div>
                     <div className='bgCheckout text-center' style={{ borderTop: '1px dashed white', borderLeft: '10px solid transparent', borderRight: '10px solid transparent' }}>

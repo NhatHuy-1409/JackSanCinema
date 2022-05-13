@@ -13,14 +13,21 @@ export default function Select(props) {
     const { infoRapChieu } = useSelector(state => state.QuanLyRapReducer)
     const [tabPosi,setTabPosi] = useState('left')
     let dispatch = useDispatch()
+
+    // useEffect(() => {
+    //     handleResize()
+    // }, [window.outerWidth])
+
     useEffect(() => {
-        callAPI();
+        // console.log(window.outerWidth);
+        // handleResize()
         window.scrollTo(0, 0);
-        window.addEventListener('resize', handleResize)
+        callAPI();
         return () => {
             window.removeEventListener('resize', handleResize)
         }
     }, [])
+
     const callAPI = () => {
         // dispatch(GetFilmList())
         dispatch(GetInfoFilm(props.match.params.id))
@@ -29,15 +36,18 @@ export default function Select(props) {
     const { tenPhim, moTa, trailer, hinhAnh } = infoFilm
     const { heThongRapChieu } = infoRapChieu
     const handleResize = () => { 
-        if(window.innerWidth < 450){
-            setTabPosi('top')
+        console.log(window.outerWidth);
+        if(window.outerWidth < 450){
+            // setTabPosi('top')
+            return 'top'
         }else{
-            setTabPosi('left')
+            // setTabPosi('left')
+            return 'left'
         }
      }
     const renderHTRap = () => {
         return <div className='bg-transparent m-5'>
-            <Tabs tabPosition={tabPosi}>
+            <Tabs tabPosition={handleResize()}>
                 {heThongRapChieu?.map((htRap, index) => {
                     return <TabPane
                         key={index} tab={<div className='text-white text-left'>

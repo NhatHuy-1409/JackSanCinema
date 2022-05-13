@@ -51,7 +51,7 @@ export default function Header(props) {
         <header className="px-4 pt-4 pb-0 md:pb-4  dark:bg-coolGray-800 dark:text-coolGray-100  text-white fixed w-full " style={{
             background: `${props.bgHeader}`
         }} >
-            <div className="container flex justify-between h-16 mx-auto headerIcon">
+            <div className="p-0 lg:px-16 container flex justify-between h-16 mx-auto headerIcon items-center">
                 <button className="p-4 lg:hidden" onClick={() => setSubmenu(!subMenu)}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-coolGray-100">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -97,12 +97,28 @@ export default function Header(props) {
                     }
 
                 </div>
-                <button className="p-4 lg:hidden">
+                <div className="p-0 lg:hidden flex">
                     {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 dark:text-coolGray-100">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                     </svg> */}
-                    <ShoppingCartOutlined className='text-2xl headerIcon' />
-                </button>
+                    {localStorage.getItem(TOKEN) ?
+                        <Fragment>
+                            <UserOutlined className={`${style.anticon} items-center`} />
+                            {/* <p className='mt-1 mb-0 pl-1 text-lg'>{JSON.parse(localStorage.getItem(USER_LOGIN)).hoTen}</p> */}
+                            <DropdownMenu />
+
+                        </Fragment>
+                        :
+                        <Fragment>
+                            <UserAddOutlined className={`${style.anticon}  items-center`} onClick={() => { history.push('/login') }}/>
+                        </Fragment>
+                    }
+
+
+
+                    {/* <ShoppingCartOutlined className='text-2xl headerIcon' /> */}
+
+                </div>
             </div>
             <div className={`${subMenu ? '' : 'hidden'} lg:hidden w-full absolute left-0 `} style={{
                 background: `${props.bgHeader}`
@@ -122,10 +138,7 @@ export default function Header(props) {
                 <div className={`items-center flex-shrink-0 text-center`} >
                     {localStorage.getItem(TOKEN) ?
                         <Fragment>
-                            <UserOutlined className={`${style.anticon} items-center`} />
-                            {/* <p className='mt-1 mb-0 pl-1 text-lg'>{JSON.parse(localStorage.getItem(USER_LOGIN)).hoTen}</p> */}
-                            <DropdownMenu />
-
+                           
                         </Fragment>
                         :
                         <Fragment>

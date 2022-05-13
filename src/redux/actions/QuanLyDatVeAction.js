@@ -29,7 +29,7 @@ export const datVe = (thongTinDatVe) => {
             const result = await quanLyDatVeServices.datVe(thongTinDatVe);
             //Đặt vé thành công load lại trang
             await dispatch(layDanhSachPhongve(thongTinDatVe.maLichChieu)) 
-            await dispatch({type:DAT_VE_HOAN_TAT})
+            // await dispatch({type:DAT_VE_HOAN_TAT})
             // await dispatch({
             //     type:CHUYEN_TAB,
             //     tabNumber:'2'
