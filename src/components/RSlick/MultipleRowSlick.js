@@ -26,16 +26,18 @@ export default class AutoPlay extends Component {
                     breakpoint: 450,
                     settings: {
                         slidesToShow: 1.7,
-                        slidesToScroll: 3,
+                        slidesToScroll: 1,
                         infinite: true,
-                        dots: true
+                        dots: true,
+                        speed: 1000,
+
                     }
                 },
                 {
                     breakpoint: 769,
                     settings: {
                         slidesToShow: 3,
-                        slidesToScroll: 3,
+                        slidesToScroll: 1,
                         infinite: true,
                         dots: true
                     }
