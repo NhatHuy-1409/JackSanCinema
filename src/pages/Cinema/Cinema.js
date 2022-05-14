@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export default function Cinema(props) {
 
-    const { infoCTRap } = useSelector(state => state.QuanLyRapReducer)
+    const { infoCTRap,infoHTRapChieu } = useSelector(state => state.QuanLyRapReducer)
 
     useEffect(() => {
         callAPI()
@@ -22,7 +22,7 @@ export default function Cinema(props) {
         const action2 = GetInfoTimeRap(props.match.params.id)
         dispatch(action2)
     }
-    console.log(infoCTRap);
+    let infoHTRap = infoHTRapChieu.filter((rap) =>  rap.maHeThongRap === props.match.params.id )
     const renderCinemaItem = () => {
         return infoCTRap.map((rap) => {
             return <div key={rap.maCumRap} className="p-2 lg:w-1/3 md:w-1/2 w-full">
@@ -43,8 +43,8 @@ export default function Cinema(props) {
     return <section className="text-gray-600 body-font container" style={{ background: '#3d3d3d' }}>
         <div className="container px-5 py-28 mx-auto">
             <div className="flex flex-col text-center w-full mb-20">
-                <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 " style={{ color: '#d2212e' }}>Danh sách Rạp</h1>
-                <p className="lg:w-2/3 mx-auto leading-relaxed text-white">Hãy xem thông tin và thời gian để xem phim vui vẻ bạn nhé !</p>
+                <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 " style={{ color: '#d2212e' }}>Danh sách Rạp - {infoHTRap[0].tenHeThongRap}</h1>
+                {/* <p className="lg:w-2/3 mx-auto leading-relaxed text-white">Hãy xem thông tin và thời gian để xem phim vui vẻ bạn nhé !</p> */}
             </div>
             <div className="flex flex-wrap -m-2">
                 {renderCinemaItem()}

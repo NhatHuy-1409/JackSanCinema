@@ -7,7 +7,7 @@ export default function Film(props) {
 
         <div className="film mr-2 h-full px-3 py-5 bg-opacity-75 rounded-lg overflow-hidden text-center relative">
 
-            <div>
+            <div className='overflow-hidden ' style={{borderRadius:'10px 10px 0 0'}}>
                 <img src={hinhAnh} alt="" />
             </div>
             <div className='p-2 contentFilm '>

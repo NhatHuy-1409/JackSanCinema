@@ -86,7 +86,7 @@ export default function Home(props) {
             {renderFilmList()}
           </div> */}
             {/* phim đang chiếu */}
-            <h2 className='text-white font-bold text-2xl'>NOW SHOWING</h2>
+            <h2 className='text-white font-bold pl-5 text-2xl'>NOW SHOWING</h2>
             <MultipleRowSlick arrFilm={arrFilmNow} className='showingFilm' />
             {/* phim sắp chiếu */}
             <h2 className='text-white font-bold pl-5 text-2xl mt-10'>COMING SOON</h2>

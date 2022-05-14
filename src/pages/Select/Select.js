@@ -36,7 +36,6 @@ export default function Select(props) {
     const { tenPhim, moTa, trailer, hinhAnh } = infoFilm
     const { heThongRapChieu } = infoRapChieu
     const handleResize = () => { 
-        console.log(window.outerWidth);
         if(window.outerWidth < 450){
             // setTabPosi('top')
             return 'top'

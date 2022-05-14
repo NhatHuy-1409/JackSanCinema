@@ -17,7 +17,6 @@ export const QuanLyRapReducer = (state = stateDefault, action) => {
             return { ...state }
         case GET_INFO_DETAIL_RAP:
             state.infoCTRap = action.infoCTRap
-            console.log(action.infoCTRap);
             return { ...state }
         default:
             return state
