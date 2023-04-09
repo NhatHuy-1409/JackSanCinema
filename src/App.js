@@ -26,6 +26,7 @@ function App() {
     <Router history={history} >
       <div className="App">
         <p>demo1</p>
+        <p>demo2</p>
       <Loading></Loading>
         <Switch>
           <HomeTemplate path='/home' component={Home} />
