@@ -25,6 +25,7 @@ function App() {
   return (
     <Router history={history} >
       <div className="App">
+        <p>demo1</p>
       <Loading></Loading>
         <Switch>
           <HomeTemplate path='/home' component={Home} />
