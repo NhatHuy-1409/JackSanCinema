@@ -27,6 +27,10 @@ function App() {
       <div className="App">
         <p>demo1</p>
         <p>demo2</p>
+        <p>demo2</p>
+        <p>demo2</p>
+        <p>demo3</p>
+        <p>demo4</p>
       <Loading></Loading>
         <Switch>
           <HomeTemplate path='/home' component={Home} />

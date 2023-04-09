@@ -15,6 +15,10 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
     <p>demo3</p>
+    <p>demo5</p>
+    <p>demo5</p>
+    <p>demo6</p>
+    <p>demo6</p>
   </Provider>
   ,
   document.getElementById('root')
