@@ -15,9 +15,10 @@ ReactDOM.render(
   <Provider store={store}>
     <App />
     <p>demo3</p>
+    <p>demo4</p>
   </Provider>
   ,
   document.getElementById('root')
 );
 
-
+j
